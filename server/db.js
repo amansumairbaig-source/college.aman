@@ -438,22 +438,25 @@ async function seedDatabaseIfEmpty() {
 
 // Connect to MongoDB
 async function connectDB() {
-  const uri = process.env.MONGODB_URI;
+  const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+
   if (!uri) {
-    console.warn('⚠️ MONGODB_URI is not set in .env');
+    console.warn('⚠️ MONGODB_URI is not set in .env or Render environment variables.');
     return false;
   }
 
   try {
     await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 6000
+      serverSelectionTimeoutMS: 6000,
+      autoIndex: true
     });
-    console.log('🌿 Connected successfully to MongoDB Atlas database!');
+
+    console.log('🌿 Connected successfully to MongoDB database!');
     await seedDatabaseIfEmpty();
     return true;
   } catch (err) {
     console.error('❌ MongoDB Connection Error:', err.message);
-    console.log('ℹ️ Tip: Check if your MongoDB Atlas username in .env matches your database user in Atlas.');
+    console.log('ℹ️ Check that the MongoDB username, password, cluster URL, and database user permissions are correct in your Atlas or Render environment variables.');
     return false;
   }
 }

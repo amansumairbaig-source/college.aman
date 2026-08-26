@@ -54,7 +54,12 @@ app.use((req, res, next) => {
 
 // Start Server after connecting to MongoDB
 async function startServer() {
-  await connectDB();
+  const dbConnected = await connectDB();
+  if (!dbConnected) {
+    console.error('❌ API startup aborted because MongoDB is not reachable.');
+    process.exit(1);
+  }
+
   app.listen(PORT, () => {
     console.log(`🚀 College Complaint Management API running on http://localhost:${PORT}`);
   });
