@@ -1,0 +1,30 @@
+{
+  "name": "college-complaint-management-system",
+  "version": "1.0.0",
+  "description": "Full-stack digital complaint tracking and resolution platform for colleges and universities",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently -n \"API,APP\" -c \"cyan,magenta\" \"node server/index.js\" \"npm run dev --prefix client\"",
+    "server": "node server/index.js",
+    "client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "build": "npm run build:client",
+    "start": "node server/index.js"
+  },
+  "keywords": [
+    "complaint-management",
+    "college-portal",
+    "student-helpdesk",
+    "issue-tracker"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0",
+    "mongoose": "^9.9.4",
+    "multer": "^1.4.5-lts.1"
+  }
+}

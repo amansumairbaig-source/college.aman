@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic / Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency directories
+node_modules/
+client/node_modules/
+
+# Production build outputs
+dist/
+client/dist/
+build/
+
+# Runtime uploads (stored on the deployment filesystem)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Vercel & Render temporary files
+.vercel
+.render
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
